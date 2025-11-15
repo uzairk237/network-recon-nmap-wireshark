@@ -1,0 +1,370 @@
+Microsoft Windows [Version 10.0.26200.6584]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\Khan>ipconfig
+
+Windows IP Configuration
+
+
+Wireless LAN adapter Local Area Connection* 9:
+
+   Media State . . . . . . . . . . . : Media disconnected
+   Connection-specific DNS Suffix  . :
+
+Wireless LAN adapter Local Area Connection* 10:
+
+   Media State . . . . . . . . . . . : Media disconnected
+   Connection-specific DNS Suffix  . :
+
+Wireless LAN adapter Wi-Fi:
+
+   Connection-specific DNS Suffix  . : lan
+   IPv6 Address. . . . . . . . . . . : 2607:fb92:182:ac90:c343:ee78:fb82:c65a
+   IPv6 Address. . . . . . . . . . . : fdfe:5e6c:2e69:98de:5d74:c397:7d12:51f
+   IPv6 Address. . . . . . . . . . . : fdfe:5e6c:2e69:98de:ff96:6ac4:8a3e:eb21
+   Temporary IPv6 Address. . . . . . : 2607:fb92:182:ac90:1a6:8701:9ce:1c3c
+   Temporary IPv6 Address. . . . . . : fdfe:5e6c:2e69:98de:1a6:8701:9ce:1c3c
+   Link-local IPv6 Address . . . . . : fe80::1abe:1f5f:a8c4:448%20
+   IPv4 Address. . . . . . . . . . . : 192.168.12.154
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Default Gateway . . . . . . . . . : fe80::fa3e:b0ff:fe02:a750%20
+                                       192.168.12.1
+
+Ethernet adapter Bluetooth Network Connection:
+
+   Media State . . . . . . . . . . . : Media disconnected
+   Connection-specific DNS Suffix  . :
+
+C:\Users\Khan>nmap -sn 192.168.12.0/24
+Starting Nmap 7.98 ( https://nmap.org ) at 2025-11-13 19:08 -0700
+Nmap scan report for TMO-G4AR.lan (192.168.12.1)
+Host is up (0.029s latency).
+MAC Address: F8:3E:B0:02:A7:50 (Unknown)
+Nmap scan report for Ghoul.lan (192.168.12.110)
+Host is up (0.068s latency).
+MAC Address: 14:AB:C5:09:FD:62 (Intel Corporate)
+Nmap scan report for iPhone.lan (192.168.12.150)
+Host is up (0.088s latency).
+MAC Address: 06:FA:74:54:94:CE (Unknown)
+Nmap scan report for DESKTOP-1BVSU7G.lan (192.168.12.154)
+Host is up.
+Nmap done: 256 IP addresses (4 hosts up) scanned in 2.73 seconds
+
+C:\Users\Khan>nmap -sV -O 192.168.12.110
+Starting Nmap 7.98 ( https://nmap.org ) at 2025-11-13 19:10 -0700
+Stats: 0:00:16 elapsed; 0 hosts completed (1 up), 1 undergoing SYN Stealth Scan
+SYN Stealth Scan Timing: About 21.90% done; ETC: 19:11 (0:00:53 remaining)
+Stats: 0:00:37 elapsed; 0 hosts completed (1 up), 1 undergoing SYN Stealth Scan
+SYN Stealth Scan Timing: About 55.00% done; ETC: 19:11 (0:00:29 remaining)
+Stats: 0:01:03 elapsed; 0 hosts completed (1 up), 1 undergoing SYN Stealth Scan
+SYN Stealth Scan Timing: About 97.25% done; ETC: 19:11 (0:00:02 remaining)
+Nmap scan report for Ghoul.lan (192.168.12.110)
+Host is up (0.061s latency).
+All 1000 scanned ports on Ghoul.lan (192.168.12.110) are in ignored states.
+Not shown: 1000 filtered tcp ports (no-response)
+MAC Address: 14:AB:C5:09:FD:62 (Intel Corporate)
+Too many fingerprints match this host to give specific OS details
+Network Distance: 1 hop
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 70.02 seconds
+
+C:\Users\Khan>
+C:\Users\Khan>ping -n 4 192.168.12.110
+
+Pinging 192.168.12.110 with 32 bytes of data:
+Request timed out.
+Request timed out.
+Request timed out.
+Request timed out.
+
+Ping statistics for 192.168.12.110:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+
+C:\Users\Khan> arp -a | grep 192.168.12.110
+'grep' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\Khan>arp -a | 192.168.12.110
+'192.168.12.110' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\Khan>arp -a 192.168.12.110
+
+Interface: 192.168.12.154 --- 0x14
+  Internet Address      Physical Address      Type
+  192.168.12.110        14-ab-c5-09-fd-62     dynamic
+
+C:\Users\Khan>admin nmap -sS -p- --open -T4 192.168.12.110 -oN scan_allports.txt -v
+'admin' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\Khan>nmap -sS -p- --open -T4 192.168.12.110 -oN scan_allports.txt -v
+Starting Nmap 7.98 ( https://nmap.org ) at 2025-11-13 19:16 -0700
+Initiating ARP Ping Scan at 19:16
+Scanning 192.168.12.110 [1 port]
+Completed ARP Ping Scan at 19:16, 0.08s elapsed (1 total hosts)
+Initiating Parallel DNS resolution of 1 host. at 19:16
+Completed Parallel DNS resolution of 1 host. at 19:16, 0.00s elapsed
+Initiating SYN Stealth Scan at 19:16
+Scanning Ghoul.lan (192.168.12.110) [65535 ports]
+SYN Stealth Scan Timing: About 1.11% done; ETC: 20:03 (0:46:07 remaining)
+SYN Stealth Scan Timing: About 3.35% done; ETC: 20:01 (0:43:43 remaining)
+Stats: 0:02:38 elapsed; 0 hosts completed (1 up), 1 undergoing SYN Stealth Scan
+SYN Stealth Scan Timing: About 5.88% done; ETC: 20:01 (0:42:07 remaining)
+Stats: 0:03:51 elapsed; 0 hosts completed (1 up), 1 undergoing SYN Stealth Scan
+SYN Stealth Scan Timing: About 8.59% done; ETC: 20:01 (0:40:58 remaining)
+SYN Stealth Scan Timing: About 13.62% done; ETC: 20:01 (0:38:41 remaining)
+SYN Stealth Scan Timing: About 18.57% done; ETC: 20:01 (0:36:24 remaining)
+SYN Stealth Scan Timing: About 23.51% done; ETC: 20:01 (0:34:10 remaining)
+SYN Stealth Scan Timing: About 28.38% done; ETC: 20:01 (0:31:56 remaining)
+SYN Stealth Scan Timing: About 33.42% done; ETC: 20:01 (0:29:41 remaining)
+Stats: 0:15:08 elapsed; 0 hosts completed (1 up), 1 undergoing SYN Stealth Scan
+SYN Stealth Scan Timing: About 33.95% done; ETC: 20:01 (0:29:26 remaining)
+SYN Stealth Scan Timing: About 39.20% done; ETC: 20:01 (0:27:12 remaining)
+SYN Stealth Scan Timing: About 44.44% done; ETC: 20:01 (0:24:55 remaining)
+SYN Stealth Scan Timing: About 49.57% done; ETC: 20:01 (0:22:40 remaining)
+SYN Stealth Scan Timing: About 54.69% done; ETC: 20:01 (0:20:25 remaining)
+SYN Stealth Scan Timing: About 59.76% done; ETC: 20:01 (0:18:08 remaining)
+SYN Stealth Scan Timing: About 64.88% done; ETC: 20:01 (0:15:51 remaining)
+SYN Stealth Scan Timing: About 70.01% done; ETC: 20:01 (0:13:33 remaining)
+SYN Stealth Scan Timing: About 75.01% done; ETC: 20:01 (0:11:17 remaining)
+SYN Stealth Scan Timing: About 80.12% done; ETC: 20:01 (0:08:59 remaining)
+SYN Stealth Scan Timing: About 85.20% done; ETC: 20:01 (0:06:41 remaining)
+SYN Stealth Scan Timing: About 90.25% done; ETC: 20:01 (0:04:24 remaining)
+Stats: 0:41:31 elapsed; 0 hosts completed (1 up), 1 undergoing SYN Stealth Scan
+SYN Stealth Scan Timing: About 91.87% done; ETC: 20:01 (0:03:40 remaining)
+SYN Stealth Scan Timing: About 96.99% done; ETC: 20:01 (0:01:22 remaining)
+Completed SYN Stealth Scan at 20:01, 2714.70s elapsed (65535 total ports)
+Read data files from: C:\Program Files (x86)\Nmap
+Nmap done: 1 IP address (1 host up) scanned in 2715.04 seconds
+           Raw packets sent: 131071 (5.767MB) | Rcvd: 10 (1.360KB)
+
+C:\Users\Khan> nmap -sV -O --osscan-guess -p <open-port-list> 192.168.12.110 -oN service_os.txt -v
+The system cannot find the file specified.
+
+C:\Users\Khan>ping -n 4 192.168.12.110
+
+Pinging 192.168.12.110 with 32 bytes of data:
+Request timed out.
+Request timed out.
+Request timed out.
+Request timed out.
+
+Ping statistics for 192.168.12.110:
+    Packets: Sent = 4, Received = 0, Lost = 4 (100% loss),
+
+C:\Users\Khan>arp -a | findstr 192.168.12.110
+  192.168.12.110        14-ab-c5-09-fd-62     dynamic
+
+
+PS C:\Users\Khan> nmap -sV -O 192.168.12.150
+Starting Nmap 7.98 ( https://nmap.org ) at 2025-11-13 19:21 -0700
+Nmap scan report for iPhone.lan (192.168.12.150)
+Host is up (0.014s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT      STATE SERVICE    VERSION
+49152/tcp open  tcpwrapped
+62078/tcp open  tcpwrapped
+MAC Address: 06:FA:74:54:94:CE (Unknown)
+Device type: phone
+Running: Apple iOS 15.X
+OS CPE: cpe:/o:apple:iphone_os:15
+OS details: Apple iOS 15.0 - 15.6 (Darwin 21.1.0 - 21.6.0)
+Network Distance: 1 hop
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 4.27 seconds
+PS C:\Users\Khan> nmap -sV -O 192.168.12.0/24 -oN network_scan.txt
+Starting Nmap 7.98 ( https://nmap.org ) at 2025-11-13 19:22 -0700
+Nmap scan report for TMO-G4AR.lan (192.168.12.1)
+Host is up (0.0042s latency).
+Not shown: 996 closed tcp ports (reset)
+PORT     STATE    SERVICE    VERSION
+23/tcp   filtered telnet
+53/tcp   open     domain     dnsmasq 2.85
+80/tcp   open     http       lighttpd 1.4.69
+8080/tcp open     http-proxy
+1 service unrecognized despite returning data. If you know the service/version, please submit the following fingerprint at https://nmap.org/cgi-bin/submit.cgi?new-service :
+SF-Port8080-TCP:V=7.98%I=7%D=11/13%Time=69169284%P=i686-pc-windows-windows
+SF:%r(GetRequest,52,"HTTP/1\.0\x20404\x20Not\x20Found\r\ncontent-length:\x
+SF:200\r\ndate:\x20Thu,\x2013\x20Nov\x202025\x2000:21:38\x20GMT\r\n\r\n")%
+SF:r(HTTPOptions,52,"HTTP/1\.0\x20404\x20Not\x20Found\r\ncontent-length:\x
+SF:200\r\ndate:\x20Thu,\x2013\x20Nov\x202025\x2000:21:38\x20GMT\r\n\r\n")%
+SF:r(RTSPRequest,54,"HTTP/1\.1\x20400\x20Bad\x20Request\r\ncontent-length:
+SF:\x200\r\ndate:\x20Thu,\x2013\x20Nov\x202025\x2000:21:38\x20GMT\r\n\r\n"
+SF:)%r(FourOhFourRequest,52,"HTTP/1\.0\x20404\x20Not\x20Found\r\ncontent-l
+SF:ength:\x200\r\ndate:\x20Thu,\x2013\x20Nov\x202025\x2000:21:38\x20GMT\r\
+SF:n\r\n")%r(Socks5,54,"HTTP/1\.1\x20400\x20Bad\x20Request\r\ncontent-leng
+SF:th:\x200\r\ndate:\x20Thu,\x2013\x20Nov\x202025\x2000:21:38\x20GMT\r\n\r
+SF:\n")%r(Socks4,54,"HTTP/1\.1\x20400\x20Bad\x20Request\r\ncontent-length:
+SF:\x200\r\ndate:\x20Thu,\x2013\x20Nov\x202025\x2000:21:38\x20GMT\r\n\r\n"
+SF:)%r(RPCCheck,54,"HTTP/1\.1\x20400\x20Bad\x20Request\r\ncontent-length:\
+SF:x200\r\ndate:\x20Thu,\x2013\x20Nov\x202025\x2000:21:43\x20GMT\r\n\r\n")
+SF:%r(DNSVersionBindReqTCP,54,"HTTP/1\.1\x20400\x20Bad\x20Request\r\nconte
+SF:nt-length:\x200\r\ndate:\x20Thu,\x2013\x20Nov\x202025\x2000:21:43\x20GM
+SF:T\r\n\r\n")%r(DNSStatusRequestTCP,54,"HTTP/1\.1\x20400\x20Bad\x20Reques
+SF:t\r\ncontent-length:\x200\r\ndate:\x20Thu,\x2013\x20Nov\x202025\x2000:2
+SF:1:43\x20GMT\r\n\r\n")%r(Help,54,"HTTP/1\.1\x20400\x20Bad\x20Request\r\n
+SF:content-length:\x200\r\ndate:\x20Thu,\x2013\x20Nov\x202025\x2000:21:43\
+SF:x20GMT\r\n\r\n")%r(SSLSessionReq,54,"HTTP/1\.1\x20400\x20Bad\x20Request
+SF:\r\ncontent-length:\x200\r\ndate:\x20Thu,\x2013\x20Nov\x202025\x2000:21
+SF::43\x20GMT\r\n\r\n")%r(TerminalServerCookie,54,"HTTP/1\.1\x20400\x20Bad
+SF:\x20Request\r\ncontent-length:\x200\r\ndate:\x20Thu,\x2013\x20Nov\x2020
+SF:25\x2000:21:43\x20GMT\r\n\r\n")%r(TLSSessionReq,54,"HTTP/1\.1\x20400\x2
+SF:0Bad\x20Request\r\ncontent-length:\x200\r\ndate:\x20Thu,\x2013\x20Nov\x
+SF:202025\x2000:21:43\x20GMT\r\n\r\n")%r(Kerberos,54,"HTTP/1\.1\x20400\x20
+SF:Bad\x20Request\r\ncontent-length:\x200\r\ndate:\x20Thu,\x2013\x20Nov\x2
+SF:02025\x2000:21:43\x20GMT\r\n\r\n");
+MAC Address: F8:3E:B0:02:A7:50 (Unknown)
+Device type: general purpose
+Running: Linux 5.X
+OS CPE: cpe:/o:linux:linux_kernel:5
+OS details: Linux 5.10 - 5.15
+Network Distance: 1 hop
+
+Nmap scan report for Ghoul.lan (192.168.12.110)
+Host is up (0.041s latency).
+All 1000 scanned ports on Ghoul.lan (192.168.12.110) are in ignored states.
+Not shown: 1000 filtered tcp ports (no-response)
+MAC Address: 14:AB:C5:09:FD:62 (Intel Corporate)
+Too many fingerprints match this host to give specific OS details
+Network Distance: 1 hop
+
+Nmap scan report for iPhone.lan (192.168.12.150)
+Host is up (0.016s latency).
+Not shown: 998 closed tcp ports (reset)
+PORT      STATE SERVICE    VERSION
+49152/tcp open  tcpwrapped
+62078/tcp open  tcpwrapped
+MAC Address: 06:FA:74:54:94:CE (Unknown)
+Device type: phone
+Running: Apple iOS 15.X
+OS CPE: cpe:/o:apple:iphone_os:15
+OS details: Apple iOS 15.0 - 15.6 (Darwin 21.1.0 - 21.6.0)
+Network Distance: 1 hop
+
+Nmap scan report for DESKTOP-1BVSU7G.lan (192.168.12.154)
+Host is up (0.00061s latency).
+Not shown: 997 closed tcp ports (reset)
+PORT    STATE SERVICE       VERSION
+135/tcp open  msrpc         Microsoft Windows RPC
+139/tcp open  netbios-ssn   Microsoft Windows netbios-ssn
+445/tcp open  microsoft-ds?
+No exact OS matches for host (If you know what OS is running on it, see https://nmap.org/submit/ ).
+TCP/IP fingerprint:
+OS:SCAN(V=7.98%E=4%D=11/13%OT=135%CT=1%CU=30453%PV=Y%DS=0%DC=L%G=Y%TM=69169
+OS:29E%P=i686-pc-windows-windows)SEQ(SP=100%GCD=1%ISR=106%TI=I%CI=I%II=I%SS
+OS:=S%TS=A)SEQ(SP=103%GCD=1%ISR=107%TI=I%CI=I%II=I%SS=S%TS=A)SEQ(SP=105%GCD
+OS:=1%ISR=10B%TI=I%CI=I%II=I%SS=S%TS=A)SEQ(SP=106%GCD=1%ISR=109%TI=I%CI=I%I
+OS:I=I%SS=S%TS=A)SEQ(SP=106%GCD=1%ISR=10C%TI=I%CI=I%II=I%SS=S%TS=A)OPS(O1=M
+OS:FFD7NW8ST11%O2=MFFD7NW8ST11%O3=MFFD7NW8NNT11%O4=MFFD7NW8ST11%O5=MFFD7NW8
+OS:ST11%O6=MFFD7ST11)WIN(W1=FFFF%W2=FFFF%W3=FFFF%W4=FFFF%W5=FFFF%W6=FFFF)EC
+OS:N(R=Y%DF=Y%T=80%W=FFFF%O=MFFD7NW8NNS%CC=N%Q=)T1(R=Y%DF=Y%T=80%S=O%A=S+%F
+OS:=AS%RD=0%Q=)T2(R=Y%DF=Y%T=80%W=0%S=Z%A=S%F=AR%O=%RD=0%Q=)T3(R=Y%DF=Y%T=8
+OS:0%W=0%S=Z%A=O%F=AR%O=%RD=0%Q=)T4(R=Y%DF=Y%T=80%W=0%S=A%A=O%F=R%O=%RD=0%Q
+OS:=)T5(R=Y%DF=Y%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)T6(R=Y%DF=Y%T=80%W=0%S=A
+OS:%A=O%F=R%O=%RD=0%Q=)T7(R=Y%DF=Y%T=80%W=0%S=Z%A=S+%F=AR%O=%RD=0%Q=)U1(R=Y
+OS:%DF=N%T=80%IPL=164%UN=0%RIPL=G%RID=G%RIPCK=Z%RUCK=G%RUD=G)IE(R=Y%DFI=N%T
+OS:=80%CD=Z)
+
+Network Distance: 0 hops
+Service Info: OS: Windows; CPE: cpe:/o:microsoft:windows
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 256 IP addresses (4 hosts up) scanned in 42.07 seconds
+PS C:\Users\Khan> ipconfig /all
+
+Windows IP Configuration
+
+   Host Name . . . . . . . . . . . . : DESKTOP-1BVSU7G
+   Primary Dns Suffix  . . . . . . . :
+   Node Type . . . . . . . . . . . . : Hybrid
+   IP Routing Enabled. . . . . . . . : No
+   WINS Proxy Enabled. . . . . . . . : No
+   DNS Suffix Search List. . . . . . : lan
+
+Wireless LAN adapter Local Area Connection* 9:
+
+   Media State . . . . . . . . . . . : Media disconnected
+   Connection-specific DNS Suffix  . :
+   Description . . . . . . . . . . . : Microsoft Wi-Fi Direct Virtual Adapter
+   Physical Address. . . . . . . . . : DA-B3-2F-42-B7-E7
+   DHCP Enabled. . . . . . . . . . . : Yes
+   Autoconfiguration Enabled . . . . : Yes
+
+Wireless LAN adapter Local Area Connection* 10:
+
+   Media State . . . . . . . . . . . : Media disconnected
+   Connection-specific DNS Suffix  . :
+   Description . . . . . . . . . . . : Microsoft Wi-Fi Direct Virtual Adapter #2
+   Physical Address. . . . . . . . . : DA-B3-2F-42-A7-F7
+   DHCP Enabled. . . . . . . . . . . : Yes
+   Autoconfiguration Enabled . . . . : Yes
+
+Wireless LAN adapter Wi-Fi:
+
+   Connection-specific DNS Suffix  . : lan
+   Description . . . . . . . . . . . : MediaTek Wi-Fi 6 MT7921 Wireless LAN Card
+   Physical Address. . . . . . . . . : D8-B3-2F-42-97-C7
+   DHCP Enabled. . . . . . . . . . . : Yes
+   Autoconfiguration Enabled . . . . : Yes
+   IPv6 Address. . . . . . . . . . . : 2607:fb92:182:ac90:c343:ee78:fb82:c65a(Preferred)
+   IPv6 Address. . . . . . . . . . . : fdfe:5e6c:2e69:98de:5d74:c397:7d12:51f(Preferred)
+   Lease Obtained. . . . . . . . . . : Thursday, November 13, 2025 6:55:49 PM
+   Lease Expires . . . . . . . . . . : Thursday, November 13, 2025 8:55:48 PM
+   IPv6 Address. . . . . . . . . . . : fdfe:5e6c:2e69:98de:ff96:6ac4:8a3e:eb21(Preferred)
+   Temporary IPv6 Address. . . . . . : 2607:fb92:182:ac90:1a6:8701:9ce:1c3c(Preferred)
+   Temporary IPv6 Address. . . . . . : fdfe:5e6c:2e69:98de:1a6:8701:9ce:1c3c(Preferred)
+   Link-local IPv6 Address . . . . . : fe80::1abe:1f5f:a8c4:448%20(Preferred)
+   IPv4 Address. . . . . . . . . . . : 192.168.12.154(Preferred)
+   Subnet Mask . . . . . . . . . . . : 255.255.255.0
+   Lease Obtained. . . . . . . . . . : Tuesday, November 11, 2025 11:36:05 PM
+   Lease Expires . . . . . . . . . . : Thursday, November 20, 2025 6:55:50 PM
+   Default Gateway . . . . . . . . . : fe80::fa3e:b0ff:fe02:a750%20
+                                       192.168.12.1
+   DHCP Server . . . . . . . . . . . : 192.168.12.1
+   DHCPv6 IAID . . . . . . . . . . . : 349745967
+   DHCPv6 Client DUID. . . . . . . . : 00-01-00-01-30-A5-E3-24-D8-B3-2F-42-97-C7
+   DNS Servers . . . . . . . . . . . : fe80::fa3e:b0ff:fe02:a750%20
+                                       192.168.12.1
+                                       fe80::fa3e:b0ff:fe02:a750%20
+   NetBIOS over Tcpip. . . . . . . . : Enabled
+
+Ethernet adapter Bluetooth Network Connection:
+
+   Media State . . . . . . . . . . . : Media disconnected
+   Connection-specific DNS Suffix  . :
+   Description . . . . . . . . . . . : Bluetooth Device (Personal Area Network)
+   Physical Address. . . . . . . . . : D8-B3-2F-42-97-C8
+   DHCP Enabled. . . . . . . . . . . : Yes
+   Autoconfiguration Enabled . . . . : Yes
+PS C:\Users\Khan> nmap -sT -p 22,80,443,139,445,3389 192.168.12.110
+Starting Nmap 7.98 ( https://nmap.org ) at 2025-11-14 18:57 -0700
+Nmap scan report for Ghoul.lan (192.168.12.110)
+Host is up (0.080s latency).
+
+PORT     STATE    SERVICE
+22/tcp   filtered ssh
+80/tcp   filtered http
+139/tcp  filtered netbios-ssn
+443/tcp  filtered https
+445/tcp  filtered microsoft-ds
+3389/tcp filtered ms-wbt-server
+MAC Address: 14:AB:C5:09:FD:62 (Intel Corporate)
+
+Nmap done: 1 IP address (1 host up) scanned in 3.75 seconds
+PS C:\Users\Khan> nmap -sV -O 192.168.12.110
+Starting Nmap 7.98 ( https://nmap.org ) at 2025-11-14 18:58 -0700
+Stats: 0:00:08 elapsed; 0 hosts completed (1 up), 1 undergoing SYN Stealth Scan
+SYN Stealth Scan Timing: About 14.65% done; ETC: 18:59 (0:00:35 remaining)
+Nmap scan report for Ghoul.lan (192.168.12.110)
+Host is up (0.033s latency).
+All 1000 scanned ports on Ghoul.lan (192.168.12.110) are in ignored states.
+Not shown: 1000 filtered tcp ports (no-response)
+MAC Address: 14:AB:C5:09:FD:62 (Intel Corporate)
+Too many fingerprints match this host to give specific OS details
+Network Distance: 1 hop
+
+OS and Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 41.22 seconds

@@ -1,0 +1,69 @@
+Complete Command List Used in the Project
+🔹 Nmap Commands
+1. Check Nmap Version
+nmap --version
+
+2. Full SYN Stealth Scan (All Ports)
+nmap -sS -p- <target-ip>
+
+3. Fast Diagnostic Scan (Ports 1–200)
+nmap -sS -p1-200 <target-ip>
+
+4. Ping Sweep / Host Discovery on Local Network
+nmap -sn 192.168.x.0/24
+
+5. Scan a Specific Device Identified from ARP
+nmap -sS -p- 192.168.x.xxx
+
+6. Version Detection (For later controlled tests)
+nmap -sV -p8080 <your-ip>
+
+7. OS Fingerprinting Attempt
+nmap -O <target-ip>
+
+8. Save Nmap Output (Optional)
+nmap -sS -p- <target-ip> -oN scan_results.txt
+
+🔹 Network Discovery Commands
+9. View ARP Table
+arp -a
+
+10. Get Your Own IP / Interface Information
+
+Windows:
+
+ipconfig
+
+🔹 Wireshark Filters
+11. Filter Packets Between You & Target
+ip.addr == <target-ip>
+
+12. Show Only SYN Packets (Probe Packets)
+tcp.flags.syn == 1 && tcp.flags.ack == 0
+
+13. Show SYN/ACK Responses (Expected on Open Ports)
+tcp.flags.syn == 1 && tcp.flags.ack == 1
+
+14. Show Only RST Responses (Closed Ports)
+tcp.flags.reset == 1
+
+15. Only Show TCP Handshakes
+tcp.flags.syn == 1 || tcp.flags.ack == 1
+
+🔹 Controlled Test Environment Commands
+16. Start a Local Web Server (Open Port 8080)
+python -m http.server 8080
+
+17. Scan Your Own Web Server
+nmap -sV -p8080 <your-ip>
+
+Total Commands: 17
+
+These cover:
+
+✔ Recon
+✔ Scanning
+✔ Host discovery
+✔ Packet analysis
+✔ Firewall isolation confirmation
+✔ Controlled environment building
